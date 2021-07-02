@@ -4,14 +4,38 @@ div.sidebar
     nav.mt-2
         ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview' role='menu' data-accordion='false')
             if isAuthenticated
-            li.nav-item
-                a.nav-link(href='allocation')
-                    i.nav-icon.fas.fa-warehouse
-                    p 
-                        | Phân bổ
-                        span.right.badge.badge-danger *
-            
-            li.nav-header Tài khoản
+                li.nav-item
+                    a.nav-link(href='allocation')
+                        i.nav-icon.fas.fa-warehouse
+                        p 
+                            | Phân bổ
+                            span.right.badge.badge-danger *
+                
+            if isAuthenticated
+                li.nav-header 
+                    i.nav-icon.fas.fa-radiation-alt.text-danger
+                    strong 
+                        | &nbsp; Administrator area
+                li.nav-item
+                    a.nav-link(href='locations')
+                        i.nav-icon.fas.fa-location-arrow
+                        p 
+                            | Locations
+                li.nav-item
+                    a.nav-link(href='stores')
+                        i.nav-icon.fas.fa-store
+                        p 
+                            | Stores
+                li.nav-item
+                    a.nav-link(href='suppliers')
+                        i.nav-icon.fas.fa-parachute-box
+                        p 
+                            | Suppliers
+                li.nav-item
+                    a.nav-link(href='skus')
+                        i.nav-icon.fab.fa-product-hunt
+                        p 
+                            | SKUs  
             if !isAuthenticated
                 li.nav-item
                     a.nav-link(href='/login')
@@ -19,6 +43,7 @@ div.sidebar
                         p
                             | Đăng nhập
             else 
+                li.nav-header Tài khoản
                 li.nav-item
                     a.nav-link(href='/user')
                         i.nav-icon.fas.fa-user
@@ -29,29 +54,5 @@ div.sidebar
                         i.nav-icon.fas.fa-sign-out-alt
                         p 
                             | Đăng xuất
-            li.nav-header 
-                i.nav-icon.fas.fa-radiation-alt.text-danger
-                strong 
-                    | &nbsp; Administrator area
-            li.nav-item
-                a.nav-link(href='locations')
-                    i.nav-icon.fas.fa-location-arrow
-                    p 
-                        | Locations
-            li.nav-item
-                a.nav-link(href='stores')
-                    i.nav-icon.fas.fa-store
-                    p 
-                        | Stores
-            li.nav-item
-                a.nav-link(href='suppliers')
-                    i.nav-icon.fas.fa-parachute-box
-                    p 
-                        | Suppliers
-            li.nav-item
-                a.nav-link(href='skus')
-                    i.nav-icon.fab.fa-product-hunt
-                    p 
-                        | SKUs  
     // /.sidebar-menu
 // /.sidebar
