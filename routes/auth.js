@@ -12,7 +12,7 @@
 /**
  * Module dependencies
  */
-var user = require('./controllers/user');
+var user = require('../controllers/user');
 
 /**
  * Routes Definitions

@@ -22,13 +22,13 @@ exports.callback = function (req, res, next) {
         return res.redirect("/login");
     }
     req.logIn(user, (err) => {
-        if (err) {
-        return next(err);
-        }
-        const returnTo = req.session.returnTo;
-        delete req.session.returnTo;
-        res.redirect(returnTo || "/");
-    });
+            if (err) {
+                return next(err);
+            }
+            const returnTo = req.session.returnTo;
+            delete req.session.returnTo;
+            res.redirect(returnTo || "/");
+        });
     })(req, res, next);
 }
 
@@ -68,4 +68,12 @@ exports.secure = function (req, res, next) {
     }
     req.session.returnTo = req.originalUrl;
     res.redirect("/login");
- }
+}
+
+exports.userRedirection = function (req, res, next) {
+    if (req.user) {
+		 res.redirect('/allocation');
+    } else {
+        return next();
+    }
+}

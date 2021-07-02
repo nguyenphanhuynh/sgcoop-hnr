@@ -12,7 +12,6 @@
  
  require("dotenv").config();
  
- const authRouter = require("./auth");
 
 /**
  * App Variables
@@ -88,20 +87,28 @@
   next();
  });
  
- // Router mounting
- app.use("/", authRouter);
+
 
 /**
  * Module dependencies.
  */
- var home = require('./controllers/home');
+ var starter = require('./controllers/starter');
  var user = require('./controllers/user');
-
 /**
  * Routes Definitions
  */
-app.get("/", home.index);
-app.get("/user", user.secure, user.index);
+ app.get("/", user.userRedirection, starter.index);
+
+ // Router mounting
+ const authRouter = require("./routes/auth");
+ const userRouter = require('./routes/users');
+ const allocation = require('./routes/allocation');
+ const adminLocation = require('./routes/admin/location');
+
+ app.use("/", authRouter);
+ app.use("/", userRouter);
+ app.use("/", allocation);
+ app.use("/", adminLocation);
 
 /**
  * Global variables
