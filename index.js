@@ -92,31 +92,20 @@
  app.use("/", authRouter);
 
 /**
+ * Module dependencies.
+ */
+ var home = require('./controllers/home');
+ var user = require('./controllers/user');
+
+/**
  * Routes Definitions
  */
- const secured = (req, res, next) => {
-	if (req.user) {
-		return next();
-    }
-    req.session.returnTo = req.originalUrl;
-    res.redirect("/login");
- };
-
-app.get("/", (req, res) => {
-	res.render("home/index", { title: "Home" });
-});
-
-app.get("/user", secured, (req, res, next) => {
-	const { _raw, _json, ...userProfile } = req.user;
-	res.render("user/user", {
-		title: "Profile",
-		userProfile: userProfile
-	});
-});
+app.get("/", home.index);
+app.get("/user", user.secure, user.index);
 
 /**
  * Server Activation
  */
- app.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`);
+ app.listen(port, (req, res) => {
+  console.log(`Listening to requests on :${port}`);
  });
