@@ -1,17 +1,47 @@
-extends /shared/layout
+extends /shared/layout-starter
 
 block layout-content
-  div.View.WelcomeView
-    h1.Banner SG Co.op
-    div.Message
-      div.Title
-        h3 Making the Best
-        h1 Food For Devs
-      span.Details Access the WHATABYTE Team Portal
-    div.NavButtons
+  //- div.View.WelcomeView
+  //-   h1.Banner SG Co.op
+  //-   div.Message
+  //-     div.Title
+  //-       h3 Making the Best
+  //-       h1 Food For Devs
+  //-     span.Details Access the WHATABYTE Team Portal
+  //-   div.NavButtons
       if isAuthenticated
         a(href="/user")
           div.NavButton Just dive in!
       else
         a(href="/login")
           div.NavButton Log in
+  .content-wrapper
+    // Content Header (Page header)
+    .content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1.m-0 Starter Page
+          // /.col
+          .col-sm-6
+            ol.breadcrumb.float-sm-right
+              li.breadcrumb-item
+                a(href='#') Home
+              li.breadcrumb-item.active Starter Page
+          // /.col
+        // /.row
+      // /.container-fluid
+    // /.content-header
+    // Main content
+    .content
+      .container-fluid
+        .row
+          div.callout.callout-info
+            h5 Xin chào 
+            p
+              | Xin vui lòng 
+              a(href="/login" class="alert-link") đăng nhập 
+              | để sử dụng
+        // /.row
+      // /.container-fluid
+    // /.content

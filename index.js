@@ -104,6 +104,12 @@ app.get("/", home.index);
 app.get("/user", user.secure, user.index);
 
 /**
+ * Global variables
+ */
+global.appName = 'Saigon Co.op - Phòng Hàng Nhãn Riêng';
+global.appShortName = 'SGCo.op';
+
+/**
  * Server Activation
  */
  app.listen(port, (req, res) => {
