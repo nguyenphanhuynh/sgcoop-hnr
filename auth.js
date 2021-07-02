@@ -44,8 +44,8 @@ router.get("/callback", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
     req.logOut();
-    console.log('req.protocolreq: ', req.protocol);
-    let returnTo = req.protocol + "://" + req.hostname;
+    let protocal = req.hostname == 'localhost' ? 'http' : 'https';
+    let returnTo = protocal + "://" + req.hostname;
     const port = req.connection.localPort;
 
     if (port !== undefined && port !== 80 && port !== 443) {
@@ -63,7 +63,6 @@ router.get("/logout", (req, res) => {
         client_id: process.env.AUTH0_CLIENT_ID,
         returnTo: returnTo
     });
-    console.log('returnTo: ', returnTo);
     logoutURL.search = searchString;
 
     res.redirect(logoutURL);
