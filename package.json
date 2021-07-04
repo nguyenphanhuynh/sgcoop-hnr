@@ -1,12 +1,13 @@
 {
-  "name": "whatabyte-portal",
+  "name": "sgcoop-hnr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "dev": "nodemon ./index.js",
-    "ui": "browser-sync start --config bs-config.js"
+    "ui": "browser-sync start --config bs-config.js",
+    "dev": "npx concurrently \"npm run dev:run\" \"npm run ui\"", 
+    "dev:run": "npx nodemon index.js"
   },
   "keywords": [],
   "author": "",
