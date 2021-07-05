@@ -1,0 +1,52 @@
+extends /shared/layout
+
+block layout-content
+  // Content Wrapper. Contains page content
+  .content-wrapper
+    // Content Header (Page header)
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 Quản lý khu vực
+          .col-sm-6
+            ol.breadcrumb.float-sm-right
+              li.breadcrumb-item
+                a(href='/') Trang chủ
+              li.breadcrumb-item
+                a(href='/') Quản lý khu vực
+              li.breadcrumb-item.active Tạo mới
+      // /.container-fluid
+    // Main content
+    section.content-header
+      .container-fluid
+        // /.row
+        .row
+          .col-md-12
+            // jquery validation
+            .card.card-primary
+              .card-header
+                h3.card-title
+                  | Form
+              // /.card-header
+              // form start
+              form#quickForm(method="post", action="/admin/locations/create")
+                .card-body
+                  .form-group
+                    label(for='code') Code
+                    input#code.form-control(type='text' name='code' placeholder='Location code')
+                  .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' name='name' placeholder='Location mame')  
+                // /.card-body
+                .card-footer
+                  button.btn.btn-primary(type='submit') Submit
+            // /.card
+    // /.row
+    // /.content
+  // /.content-wrapper
+
+block scripts 
+  script(src='/plugins/jquery-validation/jquery.validate.min.js')
+  script(src='/plugins/jquery-validation/additional-methods.min.js')
+  

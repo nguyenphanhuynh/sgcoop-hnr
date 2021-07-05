@@ -9,7 +9,7 @@
  const expressSession = require("cookie-session");
  const passport = require("passport");
  const Auth0Strategy = require("passport-auth0");
- 
+
  require("dotenv").config();
  
 
@@ -68,10 +68,12 @@
  app.use(express.static(path.join(__dirname, "public")));
  
  app.use(expressSession(session));
- 
+
  passport.use(strategy);
  app.use(passport.initialize());
  app.use(passport.session());
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
  
  passport.serializeUser((user, done) => {
   done(null, user);

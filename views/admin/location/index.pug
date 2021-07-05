@@ -21,7 +21,8 @@ block layout-content
       .col-md-12
         .card
           .card-header
-            a(href="/admin/locations/add").btn.btn-primary.float-right
+            | !{message}
+            a(href="/admin/locations/create").btn.btn-primary.float-right
               | Add
           // /.card-header
           .card-body
@@ -31,7 +32,7 @@ block layout-content
                   th(style='width: 10px') #
                   th Code
                   th Name
-                  th Action
+                  th(style='width: 200px') Action
               tbody
               for row in locations 
                 tr
@@ -41,7 +42,7 @@ block layout-content
                   td 
                     a(href="/admin/locations/edit/" + row.location_id).btn.bg-gradient-info.btn-sm
                       | Edit
-                    a(href="/admin/locations/delete" + row.location_id, onclick="return confirm('Do you want to delete \"" + row.name +"\"?')").btn.btn-outline-danger.btn-sm
+                    a(href="/admin/locations/delete/" + row.location_id, onclick="return confirm('Do you want to delete \"" + row.name +"\"?')").btn.btn-outline-danger.btn-sm
                       | Delete
           // /.card-body
           .card-footer.clearfix
@@ -60,3 +61,4 @@ block layout-content
     // /.row
     // /.content
   // /.content-wrapper
+

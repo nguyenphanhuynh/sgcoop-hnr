@@ -14,6 +14,9 @@
  * Routes Definitions
  */
 router.get("/admin/locations", user.secure, location.index);
+router.get("/admin/locations/create", user.secure, location.create);
+router.post("/admin/locations/create", user.secure, location.createLocation);
+router.get("/admin/locations/delete/:location_id", user.secure, location.deleteLocation);
 
 
 /**
