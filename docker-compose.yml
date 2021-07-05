@@ -1,38 +1,42 @@
 version: '3'
 services:
-    # mongodb:
-    #     image: mongo:4
-    #     ports:
-    #         - 27017:27017
     app:
+        container_name: sgcoop-app
         build: .
         command: npm run dev:run
         ports:
-            - 3000:3000
+            # - 3000:3000
             - 8000:8000
-        environment: 
-            # MONGO_URL: mongodb
-            PORT: 8000
+        env_file: 
+            - ./.docker/.env
         volumes:
             - .:/src/
             - nodemodules:/src/node_modules
-        # links:
-        #     - mongodb
-        # depends_on: 
-        #     - mongodb
+        links:
+            - postgresdb
+        depends_on: 
+            - postgresdb
     postgresdb:
+        container_name: sgcoop-postgresdb
         image: postgres
         volumes:
             - ./../data/postgres:/data/postgres
+            - ./.docker/postgres/:/docker-entrypoint-initdb.d/
         ports:
            - "5432:5432"
         expose: 
             - 5432
-        # environment:
-        #     POSTGRES_PASSWORD: ${POSTGRES_SQL_PASSWORD}
         env_file: 
-            - ./.env
-
+            - ./.docker/.env
+    pgadmin:
+        container_name: sgcoop-pgadmin
+        image: dpage/pgadmin4
+        env_file: 
+            - ./.docker/.env
+        volumes:
+            - pgadmin:/root/.pgadmin
+        ports:
+            - "5050:80"
 volumes:
     nodemodules: {}
-    # postgres: {}
+    pgadmin: {}

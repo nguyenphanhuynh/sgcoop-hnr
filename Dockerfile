@@ -8,6 +8,6 @@ RUN npm i --silent
 
 ADD . /src 
 
-# RUN npm run build 
+RUN npm i
 
 CMD npm start

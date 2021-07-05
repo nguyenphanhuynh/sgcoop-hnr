@@ -16,7 +16,47 @@ block layout-content
               li.breadcrumb-item.active Quản lý khu vực
       // /.container-fluid
     // Main content
-    section.content
-      h1 Quản lý khu vực
+    // /.row
+    .row
+      .col-md-12
+        .card
+          .card-header
+            a(href="/admin/locations/add").btn.btn-primary.float-right
+              | Add
+          // /.card-header
+          .card-body
+            table.table.table-bordered
+              thead
+                tr
+                  th(style='width: 10px') #
+                  th Code
+                  th Name
+                  th Action
+              tbody
+              for row in locations 
+                tr
+                  td !{row.location_id}
+                  td !{row.code}
+                  td !{row.name}
+                  td 
+                    a(href="/admin/locations/edit/" + row.location_id).btn.bg-gradient-info.btn-sm
+                      | Edit
+                    a(href="/admin/locations/delete" + row.location_id, onclick="return confirm('Do you want to delete \"" + row.name +"\"?')").btn.btn-outline-danger.btn-sm
+                      | Delete
+          // /.card-body
+          .card-footer.clearfix
+            //- ul.pagination.pagination-sm.m-0.float-right
+            //-   li.page-item
+            //-     a.page-link(href='#') &laquo;
+            //-   li.page-item
+            //-     a.page-link(href='#') 1
+            //-   li.page-item
+            //-     a.page-link(href='#') 2
+            //-   li.page-item
+            //-     a.page-link(href='#') 3
+            //-   li.page-item
+            //-     a.page-link(href='#') &raquo;
+        // /.card
+    // /.row
     // /.content
   // /.content-wrapper

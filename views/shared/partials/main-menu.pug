@@ -5,7 +5,7 @@ div.sidebar
         ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview' role='menu' data-accordion='false')
             if isAuthenticated
                 li.nav-item
-                    a.nav-link(href='allocation')
+                    a.nav-link(href='/allocation')
                         i.nav-icon.fas.fa-warehouse
                         p 
                             | Phân bổ
@@ -17,7 +17,7 @@ div.sidebar
                     strong 
                         | &nbsp; Administrator area
                 li.nav-item
-                    a.nav-link(href='locations')
+                    a.nav-link(href='/admin/locations')
                         i.nav-icon.fas.fa-location-arrow
                         p 
                             | Locations

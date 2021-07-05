@@ -13,7 +13,7 @@
 /**
  * Routes Definitions
  */
-router.get("/admin/location", user.secure, location.index);
+router.get("/admin/locations", user.secure, location.index);
 
 
 /**

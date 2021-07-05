@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./index.js",
     "ui": "browser-sync start --config bs-config.js",
-    "dev": "npx concurrently \"npm run dev:run\" \"npm run ui\"", 
+    "dev": "npx concurrently \"npm run dev:run\" \"npm run ui\"",
     "dev:run": "npx nodemon index.js"
   },
   "keywords": [],
@@ -17,12 +17,14 @@
     "nodemon": "^2.0.8"
   },
   "dependencies": {
+    "ak-logger": "^1.1.2",
     "cookie-session": "^1.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "passport": "^0.4.1",
     "passport-auth0": "^1.4.0",
+    "pg": "^8.6.0",
     "pug": "^3.0.2"
   }
 }
